@@ -14,18 +14,14 @@ void fibonacci()
 }
  
 // De quy tìm so cach bieu dien
-int rec(int x, int y, int last)
+int rec(int n, int k, int last)
 {
-    if (y == 0) {
-        if (x == 0)
-            return 1;
-        return 0;
-    }
+    if (k == 0) return (n == 0);
     int sum = 0;
-    for (int i = last; i >= 0 and fib[i] * y >= x; i--) {
-        if (fib[i] > x)
+    for (int i = last; i >= 0 and fib[i] * k >= n; i--) {
+        if (fib[i] > n)
             continue;
-        sum += rec(x - fib[i], y - 1, i);
+        sum += rec(n - fib[i], k - 1, i);
     }
     return sum;
 }

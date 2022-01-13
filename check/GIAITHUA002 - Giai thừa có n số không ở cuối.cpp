@@ -23,7 +23,7 @@ long long result(long long n)
 	
 	while (low < high)
 	{
-		long long mid = (low + high) >> 1;	//(low + high)/2
+		long long mid = (low + high)/2;
 		if (check(mid, n))
 			high = mid;
 		else
