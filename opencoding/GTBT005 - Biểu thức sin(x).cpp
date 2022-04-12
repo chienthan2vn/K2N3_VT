@@ -1,33 +1,27 @@
-//GTBT005 - Biểu thức sin(x)
-#include <iostream>
-#include <math.h>
-#include <iomanip>
+#include<bits/stdc++.h>
+#define pi 3.14159265358979323846
+#define epsilon 0.00001
 using namespace std;
-int giaithua(int n)
-{
-    if (n == 1 || n == 0)
-        return 1;
-    return n*giaithua(n-1);
-}
-void tong(int n, float x)
-{
-    float result;
-    result = 0;
-    for(int i = 1; i <= n; i ++)
-    {
-        result += (float)(pow(x,i)/giaithua(i));
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+    	float x;
+        cin >> x;
+        while (x > (2 * pi)){
+			x -= 2 * pi;
+		}
+        float mau = 1.0;
+        float tu = x;
+        float sin = x;
+        int dau = -1;
+        for (int i = 1; (tu / mau) > epsilon; i++) {
+            tu *= x * x;
+            mau *= (2 * i) * (2 * i + 1);
+            sin += dau * (tu / mau);
+            dau = -dau;
+        }
+        cout << setprecision(6) << fixed << sin << endl;
     }
-    cout << setprecision(3) << fixed << result << endl;
-}
-int main()
-{
-    int test,n;
-    float x;
-    cin >> test;
-    while(test --)
-    {
-        cin >> n >> x;
-        tong(n,x);
-    }
-    return 0;
 }
